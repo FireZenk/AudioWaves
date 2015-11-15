@@ -93,4 +93,4 @@ Shows a graphic representation of the sounds captured by the microphone on Andro
 
 ###LICENSE
 
-<script src="https://gist.github.com/FireZenk/4f1d9c0ba5cc8657b40d.js"></script>
+<code id="gist-4f1d9c0ba5cc8657b40d"></code>
