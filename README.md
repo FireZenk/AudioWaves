@@ -12,7 +12,7 @@ Shows a graphic representation of the sounds captured by the microphone on Andro
 	}
 	dependencies {
 			...
-	        compile 'org.firezenk:audiowaves:1.0'
+	        compile 'org.firezenk:audiowaves:1.0@aar'
 	}
 
 ###USAGE:
