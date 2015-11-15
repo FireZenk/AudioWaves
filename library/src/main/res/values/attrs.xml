@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="audiowaves__style">
+        <attr name="aw_format" format="enum">
+            <enum name="horizonal_lines" value="0"/>
+            <enum name="horizontal_balls" value="1"/>
+            <enum name="vertical_lines" value="2"/>
+            <enum name="vertical_balls" value="3"/>
+        </attr>
+        <attr name="aw_gravity" format="enum">
+            <enum name="center" value="0"/>
+            <enum name="left" value="1"/>
+            <enum name="top" value="2"/>
+            <enum name="right" value="3"/>
+            <enum name="bottom" value="4"/>
+        </attr>
+        <attr name="aw_width" format="integer"/>
+        <attr name="aw_height" format="integer"/>
+        <attr name="aw_num_waves" format="integer"/>
+
+        <attr name="aw_line_with" format="integer"/>
+        <attr name="aw_line_min_with" format="integer"/>
+        <attr name="aw_line_height" format="integer"/>
+        <attr name="aw_line_min_height" format="integer"/>
+        <attr name="aw_line_spacing" format="integer"/>
+        <attr name="aw_line_border_radius" format="integer"/>
+        <attr name="aw_ball_diameter" format="integer"/>
+
+        <attr name="aw_color_uniform" format="reference"/>
+        <attr name="aw_color_is_gradient" format="boolean"/>
+        <attr name="aw_color_gradient_start" format="reference"/>
+        <attr name="aw_color_gradient_end" format="reference"/>
+    </declare-styleable>
+</resources>

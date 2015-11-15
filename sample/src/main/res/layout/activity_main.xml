@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:aw="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity">
+
+    <org.firezenk.audiowaves.Visualizer
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        aw:aw_format="vertical_lines"
+        aw:aw_gravity="center"
+        aw:aw_width="100"
+        aw:aw_height="200"
+        aw:aw_num_waves="10"
+        aw:aw_line_with="30"
+        aw:aw_line_min_with="30"
+        aw:aw_line_height="30"
+        aw:aw_line_min_height="30"
+        aw:aw_line_spacing="10"
+        aw:aw_line_border_radius="50"
+        aw:aw_ball_diameter="30"
+        aw:aw_color_uniform="@color/red_light"
+        aw:aw_color_is_gradient="true"
+        aw:aw_color_gradient_start="@color/blue_light"
+        aw:aw_color_gradient_end="@color/red_light" />
+
+</RelativeLayout>
