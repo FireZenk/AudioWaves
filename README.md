@@ -12,17 +12,23 @@ Shows a graphic representation of the sounds captured by the microphone on Andro
 	}
 	dependencies {
 			...
-	        compile 'org.firezenk:audiowaves:1.0@aar'
+	        compile 'org.firezenk:audiowaves:1.1@aar'
 	}
 
 ###USAGE:
 
-1. Add the new xmls to your layout parent widget
+1. Add permission to record audio (into your Manifest)
+	
+	````
+	<uses-permission android:name="android.permission.RECORD_AUDIO"/>
+	````
+
+2. Add the new xmls to your layout parent widget
 
 	````
 	xmlns:aw="http://schemas.android.com/apk/res-auto"
 	````
-2. Add AudioWeaves to your layout and configure it
+3. Add AudioWeaves to your layout and configure it
 
 	````
 	<org.firezenk.audiowaves.Visualizer
@@ -45,7 +51,12 @@ Shows a graphic representation of the sounds captured by the microphone on Andro
         aw:aw_color_gradient_start="@color/YOUR_START_COLOR"
         aw:aw_color_gradient_end="@color/YOUR_END_COLOR" />
 	````
-3. Also you can configure AudioWeaves by code
+4. Start (and stop) the listener
+	
+	````
+	((Visualizer) findViewById(R.id.visualizer)).startListening(); //to stop: .stopListening()
+	````
+5. (Optional) Also you can configure AudioWeaves by code
 	
 	````
 	void setFormat(int format);
