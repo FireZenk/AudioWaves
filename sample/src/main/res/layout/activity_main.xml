@@ -11,6 +11,7 @@
     tools:context=".MainActivity">
 
     <org.firezenk.audiowaves.Visualizer
+        android:id="@+id/visualizer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         aw:aw_format="vertical_lines"

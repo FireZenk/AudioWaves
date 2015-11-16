@@ -5,6 +5,10 @@ package org.firezenk.audiowaves;
  */
 public interface IVisualizer {
 
+    void startListening();
+
+    void stopListening();
+
     void setFormat(int format);
 
     void setGravity(int gravity);

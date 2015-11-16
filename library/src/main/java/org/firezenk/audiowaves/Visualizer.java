@@ -51,6 +51,7 @@ public class Visualizer extends LinearLayout implements IVisualizer {
     private Handler uiThread = new Handler();
     private LinearLayout.LayoutParams params;
     private ArrayList<View> waveList = new ArrayList<>();
+    private Thread listeningThread;
 
     public Visualizer(Context context) {
         super(context);
@@ -142,6 +143,7 @@ public class Visualizer extends LinearLayout implements IVisualizer {
         }
 
         this.addWaves();
+        this.prepare();
     }
 
     private void addWaves() {
@@ -235,8 +237,7 @@ public class Visualizer extends LinearLayout implements IVisualizer {
         v.setBackground(gd);
     }
 
-    @Override protected void onAttachedToWindow() {
-        super.onAttachedToWindow();
+    private void prepare() {
         AudioDispatcher dispatcher = AudioDispatcherFactory.fromDefaultMicrophone(22050, 1024, 0);
 
         PitchDetectionHandler pdh = new PitchDetectionHandler() {
@@ -289,7 +290,17 @@ public class Visualizer extends LinearLayout implements IVisualizer {
         AudioProcessor p = new PitchProcessor(
                 PitchProcessor.PitchEstimationAlgorithm.FFT_YIN, 22050, 1024, pdh);
         dispatcher.addAudioProcessor(p);
-        new Thread(dispatcher).start();
+        listeningThread = new Thread(dispatcher);
+    }
+
+    @Override
+    public void startListening() {
+        listeningThread.start();
+    }
+
+    @Override
+    public void stopListening() {
+        listeningThread.interrupt();
     }
 
     @Override public void setFormat(int format) {
