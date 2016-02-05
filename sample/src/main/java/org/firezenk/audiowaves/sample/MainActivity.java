@@ -1,5 +1,8 @@
 package org.firezenk.audiowaves.sample;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -9,12 +12,15 @@ public class MainActivity extends AppCompatActivity {
 
     @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+
+        int permissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO);
+        if(permissionCheck == PackageManager.PERMISSION_GRANTED) {
+            setContentView(R.layout.activity_main);
+            ((Visualizer) findViewById(R.id.visualizer)).startListening();
+        }
+        else {
+            setContentView(R.layout.no_mic);
+        }
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        ((Visualizer) findViewById(R.id.visualizer)).startListening();
-    }
 }

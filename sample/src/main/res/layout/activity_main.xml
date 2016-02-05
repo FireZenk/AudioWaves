@@ -29,6 +29,6 @@
         aw:aw_color_uniform="@color/red_light"
         aw:aw_color_is_gradient="true"
         aw:aw_color_gradient_start="@color/blue_light"
-        aw:aw_color_gradient_end="@color/red_light" />
+        aw:aw_color_gradient_end="@color/red_light"/>
 
 </RelativeLayout>
