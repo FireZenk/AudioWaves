@@ -56,23 +56,29 @@ public class Visualizer extends LinearLayout implements IVisualizer {
     public Visualizer(Context context) {
         super(context);
         this.context = context;
-        this.init();
+        if(!isInEditMode()) {
+            this.init();
+        }
     }
 
     public Visualizer(Context context, AttributeSet attrs) {
         super(context, attrs);
         this.context = context;
 
-        this.attributes(attrs);
-        this.init();
+        if(!isInEditMode()){
+            this.attributes(attrs);
+            this.init();
+        }
     }
 
-    public Visualizer(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
+    public Visualizer(Context context, AttributeSet attrs, int defStyleAttr){
+            super(context, attrs, defStyleAttr);
         this.context = context;
 
-        this.attributes(attrs);
-        this.init();
+        if(!isInEditMode()){
+            this.attributes(attrs);
+            this.init();
+        }
     }
 
     private void attributes(AttributeSet attrs) {
