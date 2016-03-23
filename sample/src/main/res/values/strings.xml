@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">AudioWaves</string>
+    <string name="permission_not_granted">Permission was not granted</string>
 </resources>

@@ -6,6 +6,7 @@ import android.content.res.TypedArray;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Handler;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,6 +53,7 @@ public class Visualizer extends LinearLayout implements IVisualizer {
     private LinearLayout.LayoutParams params;
     private ArrayList<View> waveList = new ArrayList<>();
     private Thread listeningThread;
+    private PitchDetectionHandler pdh;
 
     public Visualizer(Context context) {
         super(context);
@@ -244,9 +246,8 @@ public class Visualizer extends LinearLayout implements IVisualizer {
     }
 
     private void prepare() {
-        AudioDispatcher dispatcher = AudioDispatcherFactory.fromDefaultMicrophone(22050, 1024, 0);
 
-        PitchDetectionHandler pdh = new PitchDetectionHandler() {
+        pdh = new PitchDetectionHandler() {
             @Override
             public void handlePitch(PitchDetectionResult result, AudioEvent e) {
                 final float pitchInHz = result.getPitch();
@@ -293,14 +294,19 @@ public class Visualizer extends LinearLayout implements IVisualizer {
             }
         };
 
-        AudioProcessor p = new PitchProcessor(
-                PitchProcessor.PitchEstimationAlgorithm.FFT_YIN, 22050, 1024, pdh);
-        dispatcher.addAudioProcessor(p);
-        listeningThread = new Thread(dispatcher);
+
+
     }
 
     @Override
     public void startListening() {
+        if(listeningThread == null){
+            AudioDispatcher dispatcher = AudioDispatcherFactory.fromDefaultMicrophone(22050, 1024, 0);
+            AudioProcessor p = new PitchProcessor(
+                    PitchProcessor.PitchEstimationAlgorithm.FFT_YIN, 22050, 1024, pdh);
+            dispatcher.addAudioProcessor(p);
+            listeningThread = new Thread(dispatcher);
+        }
         listeningThread.start();
     }
 
