@@ -5,6 +5,7 @@ Shows a graphic representation of the sounds captured by the microphone on Andro
 ![android_audio_waves](https://cloud.githubusercontent.com/assets/1595403/11171019/e7f21ebe-8be4-11e5-80ed-5d485dc46719.png)
 
 ###GRADLE:
+Add this to your `app/build.gradle`
 
 	repositories {
 	    	...
